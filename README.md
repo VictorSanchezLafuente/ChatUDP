@@ -1,5 +1,5 @@
-## Aplicación de Chat UDP Simple
-# Esta sencilla aplicación de chat demuestra el uso de los sockets de Java para implementar un sistema de chat básico. Consiste en un servidor que puede manejar múltiples clientes y permite a los usuarios unirse a salas y enviar mensajes entre ellos.
+# Aplicación de Chat UDP Simple
+### Esta sencilla aplicación de chat demuestra el uso de los sockets de Java para implementar un sistema de chat básico. Consiste en un servidor que puede manejar múltiples clientes y permite a los usuarios unirse a salas y enviar mensajes entre ellos.
 
 - Componentes
     - La aplicación se divide en los siguientes componentes:
