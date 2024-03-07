@@ -18,10 +18,10 @@ public class ChatServer {
     public void startServer(int port) {
         try {
             serverSocket = new ServerSocket(port);
-            System.out.println("Servidor de chat iniciado en el puerto " + port);
+            System.out.println("SERVER CHAT INICIADO DESDE EL PUERTO: " + port);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Cliente conectado desde: " + clientSocket.getInetAddress().getHostAddress());
+                System.out.println("CLIENTE CONECTADO DESDE: " + clientSocket.getInetAddress().getHostAddress());
                 Thread thread = new Thread(new ClientHandler(clientSocket));
                 thread.start();
             }
@@ -46,7 +46,7 @@ public class ChatServer {
                 initializeStreams();
                 welcomeMessage();
 
-                String username = getUserInput("Ingrese su nombre de usuario:");
+                String username = getUserInput("INTRODUCE TU NOMBRE DE USUARIO:");
                 user = new User(username, clientSocket);
                 users.add(user);
 
@@ -66,7 +66,7 @@ public class ChatServer {
         }
 
         private void welcomeMessage() {
-            out.println("Conexión establecida. Bienvenido al chat!");
+            out.println("CONEXIÓN ESTABLECIDA! ADELANTE");
         }
 
         private String getUserInput(String prompt) throws IOException {
@@ -79,7 +79,7 @@ public class ChatServer {
         }
 
         private void greetUser(String username) {
-            out.println("Bienvenido, " + username + "! Para ver la lista de comandos, escriba /help");
+            out.println("BUENAS " + username + "!, SI QUIERES VER LA LISTA DE COMANDOS ESCRIBE /help");
         }
 
         private void handleChatInput() throws IOException {
@@ -98,7 +98,7 @@ public class ChatServer {
             switch (tokens[0]) {
                 case "/help":
                     out.println("Lista de comandos:");
-                    out.println("/list -> Lista todas las salas disponibles");
+                    out.println("/list -> Listado de todas las salas disponibles");
                     out.println("/create + nombre_sala -> Crea una nueva sala");
                     out.println("/join + nombre_sala -> Únete a una sala existente");
                     out.println("/exit -> Salir del chat");
@@ -107,7 +107,7 @@ public class ChatServer {
                     if (rooms.isEmpty()) {
                         out.println("No hay salas Creadas.");
                     } else {
-                        out.println("Salas disponibles:");
+                        out.println("Estas son las salas disponibles:");
                         for (Room room : rooms) {
                             out.println("- " + room.getName());
                         }
@@ -121,8 +121,8 @@ public class ChatServer {
                         Room room = createRoom(roomName);
                         if (room != null) {
                             user.joinRoom(room);
-                            out.println("Sala '" + roomName + "' creada y unido exitosamente.");
-                            out.println("Escriba el mensaje:");
+                            out.println("Sala '" + roomName + "' creada y usted ha sido unido correctamente.");
+                            out.println("Introduce el mensaje:");
                         } else {
                             out.println("La sala '" + roomName + "' ya existe.");
                         }
@@ -146,7 +146,7 @@ public class ChatServer {
                     out.println("Desconectado del chat.");
                     break;
                 default:
-                    out.println("Comando no reconocido. Escriba /help para ver la lista de comandos.");
+                    out.println("ESTE COMANDO NO ES RECONOCIBLE. INTRODUCE /help PARA VER TODOS LOS COMANDOS DISPONIBLES");
             }
         }
         
@@ -170,7 +170,7 @@ public class ChatServer {
                 user.sendMessage(message);
             }
         } else {
-            System.out.println("La sala es nula. No se puede enviar el mensaje.");
+            System.out.println("SALA NULA. No se puede enviar el mensaje.");
         }
     }
 

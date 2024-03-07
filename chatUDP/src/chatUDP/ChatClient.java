@@ -42,7 +42,7 @@ public class ChatClient {
 
     public static void main(String[] args) {
         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Ingrese su nombre de usuario: ");
+        System.out.print("INTRODUCE TU NOMBRE DE USUARIO: ");
         String username = "";
         try {
             username = consoleInput.readLine();
